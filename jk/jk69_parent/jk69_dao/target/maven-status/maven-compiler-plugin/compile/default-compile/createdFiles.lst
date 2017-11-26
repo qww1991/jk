@@ -1,0 +1,4 @@
+cn\itcast\jk\dao\impl\SqlDaoImpl.class
+cn\itcast\jk\dao\impl\BaseDaoImpl.class
+cn\itcast\jk\dao\SqlDao.class
+cn\itcast\jk\dao\BaseDao.class

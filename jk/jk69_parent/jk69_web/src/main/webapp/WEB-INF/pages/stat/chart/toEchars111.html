@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ECharts · Example</title>
+
+    <link rel="shortcut icon" href="../echarlib/favicon.png">
+    
+    <link href="../echarlib/font-awesome.min.css" rel="stylesheet">
+    <link href="../echarlib/bootstrap.css" rel="stylesheet">
+    <link href="../echarlib/carousel.css" rel="stylesheet">
+    <link href="../echarlib/echartsHome.css" rel="stylesheet">
+    <link href="../echarlib/codemirror.css" rel="stylesheet">
+    <link href="../echarlib/monokai.css" rel="stylesheet">
+    
+    <script src="../echarlib/bootstrap.min.js"></script>
+    <script src="../echarlib/echartsExample.js"></script>
+    <script src="../echarlib/codemirror.js"></script>
+    <script src="../echarlib/javascript.js"></script>
+    <script src="../echarlib/jquery.min.js"></script>
+    
+    <script src="../js/echarts.js"></script>
+    <script type="text/javascript" src="../echarlib/echartsHome.js"></script>
+    
+    
+    
+    <script type="text/javascript">
+    
+    $(function(){
+    	var myChart = echarts.init(document.getElementById('main'));
+        
+        var quxianoption = {
+        	    title: {
+        	        x: 'center',
+        	        text: '登录IP个数统计排行',
+        	        subtext: 'Rainbow bar example',
+        	        link: '#'
+        	    },
+        	    tooltip: {
+        	        trigger: 'item'
+        	    },
+        	    toolbox: {
+        	        show: true,
+        	        feature: {
+        	            dataView: {show: true, readOnly: false},
+        	            restore: {show: true},
+        	            saveAsImage: {show: true}
+        	        }
+        	    },
+        	    calculable: true,
+        	    grid: {
+        	        borderWidth: 0,
+        	        y: 80,
+        	        y2: 60
+        	    },
+        	    xAxis: [
+        	        {
+        	            type: 'category',
+        	            show: false,
+        	            data: []
+        	        }
+        	    ],
+        	    yAxis: [
+        	        {
+        	            type: 'value',
+        	            show: false
+        	        }
+        	    ],
+        	    series: [
+        	        {
+        	            name: 'IP个数',
+        	            type: 'bar',
+        	            itemStyle: {
+        	                normal: {
+        	                    color: function(params) {
+        	                        // build a color map as your need.
+        	                        var colorList = [
+        	                          '#C1232B','#B5C334','#FCCE10','#E87C25','#27727B',
+        	                           '#FE8463','#9BCA63','#FAD860','#F3A43B','#60C0DD',
+        	                           '#D7504B','#C6E579','#F4E001','#F0805A','#26C0C0'
+        	                        ];
+        	                        return colorList[params.dataIndex]
+        	                    },
+        	                    label: {
+        	                        show: true,
+        	                        position: 'top',
+        	                        formatter: '{b}\n{c}'
+        	                    }
+        	                }
+        	            },
+        	            data: [],
+        	            markPoint: {
+        	                tooltip: {
+        	                    trigger: 'item',
+        	                    backgroundColor: 'rgba(0,0,0,0)',
+        	                    formatter: function(params){
+        	                        return '';
+        	                    }
+        	                },
+        	                data: [/* 
+        	                    {xAxis:0, y: 350, name:'Line', symbolSize:20, symbol: 'image://../asset/ico/折线图.png'},
+        	                    {xAxis:1, y: 350, name:'Bar', symbolSize:20, symbol: 'image://../asset/ico/柱状图.png'},
+        	                    {xAxis:2, y: 350, name:'Scatter', symbolSize:20, symbol: 'image://../asset/ico/散点图.png'},
+        	                    {xAxis:3, y: 350, name:'K', symbolSize:20, symbol: 'image://../asset/ico/K线图.png'},
+        	                    {xAxis:4, y: 350, name:'Pie', symbolSize:20, symbol: 'image://../asset/ico/饼状图.png'},
+        	                    {xAxis:5, y: 350, name:'Radar', symbolSize:20, symbol: 'image://../asset/ico/雷达图.png'},
+        	                    {xAxis:6, y: 350, name:'Chord', symbolSize:20, symbol: 'image://../asset/ico/和弦图.png'},
+        	                    {xAxis:7, y: 350, name:'Force', symbolSize:20, symbol: 'image://../asset/ico/力导向图.png'},
+        	                    {xAxis:8, y: 350, name:'Map', symbolSize:20, symbol: 'image://../asset/ico/地图.png'},
+        	                    {xAxis:9, y: 350, name:'Gauge', symbolSize:20, symbol: 'image://../asset/ico/仪表盘.png'},
+        	                    {xAxis:10, y: 350, name:'Funnel', symbolSize:20, symbol: 'image://../asset/ico/漏斗图.png'},
+        	                 */]
+        	            }
+        	        }
+        	    ]
+        	};
+        
+        	myChart.setOption(quxianoption);
+        	$.ajax({
+        		url:'statChartAction_toEchar',
+        		type:'get',
+        		dataType:'json',
+        		success:function(d){
+        			myChart.setOption({
+        				xAxis: {
+				            data: d.x
+				        },
+				        series: [{
+				            data: d.y
+				        }]
+        			});
+        		}
+        	})
+    })
+    
+    </script>
+</head>
+
+<body>
+	  <div>
+		    <table>
+		    		<tr>
+		    			<div id="main" style="width: 100%;height:640px;"></div>
+		    		</tr>
+	    	</table>
+	    </div>
+    
+</body>
+</html>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cn.itcast.jk.domain">
+	<!-- 配置类的映射 -->
+	<class name="SubjectInfo" table="SUBJECT_INFO_C">
+		<!-- 1.配置主键生成策略 -->
+		<id name="id" column="SUBJECT_INFO_ID" type="string">
+			<generator class="uuid"/>
+		</id>
+		
+		<!-- 2.配置其他属性 -->
+		<property name="inputBy" column="INPUT_BY"/>
+		<property name="inputTime" column="INPUT_TIME"/>
+		<property name="getBy" column="GET_BY"/>
+		<property name="getTime" column="GET_TIME"/>
+		<property name="inputInfo" column="INPUT_INFO"/>
+
+		
+		<!-- 多对一 -->		
+		<many-to-one name="feedback" class="Feedback" column="FEEDBACK_ID"/>
+		
+	</class>
+
+</hibernate-mapping>

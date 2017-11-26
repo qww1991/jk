@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"  
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"       
+	xmlns:p="http://www.springframework.org/schema/p"  
+	xmlns:context="http://www.springframework.org/schema/context"   
+	xmlns:tx="http://www.springframework.org/schema/tx"  
+	xmlns:aop="http://www.springframework.org/schema/aop"  
+	xsi:schemaLocation="http://www.springframework.org/schema/beans    
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd    
+	http://www.springframework.org/schema/aop    
+	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd    
+	http://www.springframework.org/schema/tx    
+	http://www.springframework.org/schema/tx/spring-tx-3.0.xsd    
+	http://www.springframework.org/schema/context    
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	
+	<bean id="loginAction" class="cn.itcast.jk.action.LoginAction" scope="prototype">
+		<property name="loginLogService" ref="loginLogService"></property>
+	
+	</bean>
+	<bean id="homeAction" class="cn.itcast.jk.action.HomeAction" scope="prototype">
+		<property name="userBBSService" ref="userBBSService"></property>
+		<property name="userService" ref="userService"></property>
+	</bean>
+	<bean id="deptAction" class="cn.itcast.jk.action.sysadmin.DeptAction" scope="prototype">
+		<property name="deptService" ref="deptService"></property>
+	</bean>
+	<bean id="userAction" class="cn.itcast.jk.action.sysadmin.UserAction" scope="prototype">
+		<property name="userService" ref="userService"></property>
+		<property name="deptService" ref="deptService"></property>
+		<property name="roleService" ref="roleService"></property>
+	</bean>
+	<bean id="roleAction" class="cn.itcast.jk.action.sysadmin.RoleAction" scope="prototype">
+		<property name="roleService" ref="roleService"></property>
+		<property name="moduleService" ref="moduleService"></property>
+	</bean>
+	<bean id="moduleAction" class="cn.itcast.jk.action.sysadmin.ModuleAction" scope="prototype">
+		<property name="moduleService" ref="moduleService"></property>
+	</bean>
+	<bean id="contractAction" class="cn.itcast.jk.action.cargo.ContractAction" scope="prototype">
+		<property name="contractService" ref="contractService"></property>
+		<property name="contractProductService" ref="contractProductService"></property>
+		
+	</bean>
+	<bean id="contractProductAction" class="cn.itcast.jk.action.cargo.ContractProductAction" scope="prototype">
+		<property name="contractProductService" ref="contractProductService"></property>
+		<property name="contractService" ref="contractService"></property>
+		<property name="factoryService" ref="factoryService"></property>
+	</bean>
+	<bean id="extCproductAction" class="cn.itcast.jk.action.cargo.ExtCproductAction" scope="prototype">
+		<property name="extCproductService" ref="extCproductService"></property>
+		<property name="factoryService" ref="factoryService"></property>
+	</bean>
+	<bean id="outProductAction" class="cn.itcast.jk.action.cargo.OutProductAction" scope="prototype">
+		<property name="contractService" ref="contractService"></property>
+	</bean>
+	<bean id="statChartAction" class="cn.itcast.jk.action.stat.StatChartAction" scope="prototype">
+		<property name="sqlService" ref="sqlService"></property>
+		<property name="baseDao" ref="baseDao"></property>
+		
+	</bean>
+	<bean id="exportAction" class="cn.itcast.jk.action.cargo.ExportAction" scope="prototype">
+		<property name="exportService" ref="exportService"></property>
+		<property name="contractService" ref="contractService"></property>
+		<property name="exportProductService" ref="exportProductService"></property>
+		<property name="epService" ref="epService"></property>
+	</bean>
+	<bean id="packingListAction" class="cn.itcast.jk.action.cargo.PackingListAction" scope="prototype">
+		<property name="packingListService" ref="packingListService"/>
+		<property name="exportService" ref="exportService"/>
+	</bean>
+	
+	<!-- 用户的模块 -->
+	<bean id="dbAction" class="cn.itcast.jk.action.DBAction" scope="prototype">
+		<property name="userModuleService" ref="userModuleService"/>
+		<property name="userService" ref="userService"/>
+		<property name="sqlService" ref="sqlService"/>
+	</bean>
+	<!-- 用户的菜单 -->
+	<bean id="menuAction" class="cn.itcast.jk.action.MenuAction" scope="prototype">
+		<property name="sqlService" ref="sqlService"/>
+		<property name="userModuleService" ref="userModuleService"/>
+		<property name="moduleService" ref="moduleService"/>
+	</bean>
+	
+	<bean id="taskAction" class="cn.itcast.jk.action.befor.TaskAction" scope="prototype">
+		<property name="feedbackService" ref="feedbackService"/>
+		<property name="userService" ref="userService"/>
+		<property name="subjectInfoService" ref="subjectInfoService"/>
+	</bean>
+	
+
+	
+	<!-- 委托单 -->
+	<bean id="shippingOrderAction" class="cn.itcast.jk.action.cargo.ShippingOrderAction" scope="prototype">
+		<property name="shippingOrderService" ref="shippingOrderService"/>
+		<property name="packingListService" ref="packingListService"/>
+		<property name="exportService" ref="exportService"/>
+	</bean>
+	
+	<!-- 发票 -->
+	<bean id="invoiceAction" class="cn.itcast.jk.action.cargo.InvoiceAction" scope="prototype">
+		<property name="invoiceService" ref="invoiceService"/>
+		<property name="shippingOrderService" ref="shippingOrderService"/>
+		<property name="packingListService" ref="packingListService"/>
+		<property name="exportService" ref="exportService"/>
+	</bean>
+	
+	<!-- 财务报运 -->
+	<bean id="financeAction" class="cn.itcast.jk.action.cargo.FinanceAction" scope="prototype">
+		<property name="financeService" ref="financeService"/>
+		<property name="invoiceService" ref="invoiceService"/>
+		<property name="shippingOrderService" ref="shippingOrderService"/>
+		<property name="packingListService" ref="packingListService"/>
+		<property name="exportService" ref="exportService"/>
+	</bean>
+		<!-- 任务反馈 -->
+		<bean id="opinionAction" class="cn.itcast.jk.action.befor.OpinionAction" scope="prototype">
+		<property name="feedbackService" ref="feedbackService">	</property>
+		<property name="userService" ref="userService"></property>
+		<property name="subjectInfoService" ref="subjectInfoService"/>
+	</bean>	
+	
+
+	<!-- 	系统使用反馈action ly   -->
+	<bean id="sysbackAction" class="cn.itcast.jk.action.befor.SysbackAction" scope="prototype">
+		<property name="userService" ref="userService" ></property>
+		<property name="sender" ref="mailSender" ></property>
+		<property name="message" ref="mailMessage" ></property>
+	</bean>
+
+	<!-- 	工厂信息action -->
+	<bean id="baseFactoryAction" class="cn.itcast.jk.action.baseinfo.BaseFactoryAction" scope="prototype">
+		<property name="factoryService" ref="factoryService" ></property>
+	</bean>
+	<!-- 个人信息修改 -->
+	<bean id="userInfoAction" class="cn.itcast.jk.action.baseinfo.UserInfoAction" scope="prototype">
+		<property name="userService" ref="userService"></property>
+		<property name="deptService" ref="deptService"></property>
+	</bean>
+	
+	<!-- 商品管理信息 -->
+	<bean id="baseProductAction" class="cn.itcast.jk.action.baseinfo.BaseProductAction" scope="prototype">
+		<property name="productService" ref="productService"/>
+		<property name="factoryService" ref="factoryService"/>	
+	</bean>
+	
+	
+	
+	
+</beans>

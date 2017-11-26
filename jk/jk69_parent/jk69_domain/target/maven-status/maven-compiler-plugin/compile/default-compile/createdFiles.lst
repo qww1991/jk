@@ -1,0 +1,17 @@
+cn\itcast\jk\domain\Export.class
+cn\itcast\jk\domain\UserInfo.class
+cn\itcast\jk\domain\Role.class
+cn\itcast\jk\domain\Dept.class
+cn\itcast\jk\domain\ContractProduct.class
+cn\itcast\jk\domain\ExtEproduct.class
+cn\itcast\jk\domain\Contract.class
+cn\itcast\jk\domain\PackingList.class
+cn\itcast\jk\domain\ExportProduct.class
+cn\itcast\jk\domain\Module.class
+cn\itcast\jk\domain\Factory.class
+cn\itcast\jk\domain\ExtCproduct.class
+cn\itcast\jk\domain\BaseEntity.class
+cn\itcast\jk\domain\Feedback.class
+cn\itcast\jk\domain\SubjectInfo.class
+cn\itcast\jk\domain\User.class
+cn\itcast\jk\domain\UserBBS.class

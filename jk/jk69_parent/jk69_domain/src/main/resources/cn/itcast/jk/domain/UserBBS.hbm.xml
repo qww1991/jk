@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.itcast.jk.domain.UserBBS" table="USER_BBS_P">
+		<id name="id" column="USER_BBS_ID">
+			<!--hibernate主键生成策略：native, increment,sequence,uuid,assigned,identity  -->
+			<generator class="assigned"/>
+		</id>
+		
+		<property name="user_id" column="USER_ID"/>
+		<property name="content" column="BBS_CONTENT"/>
+		<property name="state" column="STATE"/>
+		<property name="left" column="LEFT"/>
+		<property name="top" column="TOP"/>
+		<property name="create_time" column="CREATE_TIME"/>
+		<property name="backGround1" column="BACKGROUND1"/>
+		<property name="backGround2" column="BACKGROUND2"/>
+		<property name="backGround3" column="BACKGROUND3"/>
+		<property name="icon" column="ICON"/>
+		
+	</class>
+</hibernate-mapping>

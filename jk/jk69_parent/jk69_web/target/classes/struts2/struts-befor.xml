@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.ui.theme" value="simple" />
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+
+	<package name="befor" namespace="/befor" extends="default">
+
+		<action name="taskAction_*" method="{1}" class="taskAction">
+			<result name="list">/WEB-INF/pages/start/task/MyTask.jsp</result>
+			<result name="infoList">/WEB-INF/pages/start/task/TaskInfo.jsp</result>
+			<result name="answer">/WEB-INF/pages/start/task/MyAnswer.jsp</result>
+			<result name="forward">/WEB-INF/pages/start/task/MyForward.jsp</result>
+			<result name="toTask" type="redirectAction">taskAction_list</result>
+			<result name="toList" type="redirectAction">
+				<param name="namespace">/befor</param>
+				<param name="actionName">taskAction_infoList</param>
+				<param name="id">${fbId}</param>
+			</result>
+		</action>
+			<action name="opinionAction_*" method="{1}" class="opinionAction">
+			<result name="list">/WEB-INF/pages/start/opinion/opinionList.jsp</result>
+			<result name="toview">/WEB-INF/pages/start/opinion/opinionView.jsp</result>
+			<result name="tocreate">/WEB-INF/pages/start/opinion/opinionCreate.jsp</result>
+			<result name="alist" type="redirectAction">
+			<param name="namespace">/befor</param>
+			<param name="actionname">opinionAction_toview</param>
+			<param name="id">${id}</param>
+			</result>
+		</action>
+	</package>
+
+</struts>
+	

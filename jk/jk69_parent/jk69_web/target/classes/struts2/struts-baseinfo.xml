@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<package name="baseinfo" namespace="/baseinfo" extends="default">
+
+		<action name="baseFactoryAction_*" method="{1}" class="baseFactoryAction">
+			<result name="list">/WEB-INF/pages/baseinfo/facrotyinfo/jFactoryList.jsp</result>
+			<result name="toview">/WEB-INF/pages/baseinfo/facrotyinfo/jFactoryView.jsp</result>
+			<result name="tocreate">/WEB-INF/pages/baseinfo/facrotyinfo/jFactoryCreate.jsp</result>
+			<result name="insert" type="redirectAction">baseFactoryAction_list</result>
+			<result name="toupdate">/WEB-INF/pages/baseinfo/facrotyinfo/jFactoryUpdate.jsp</result>
+			<result name="update" type="redirectAction">baseFactoryAction_list</result>
+			<result name="delete" type="redirectAction">baseFactoryAction_list</result>
+		</action>
+		<action name="baseProductAction_*" method="{1}" class="baseProductAction">
+		
+			<result name="pcreate">/WEB-INF/pages/baseinfo/jProductCreate.jsp</result>
+			<result name="alist" type="redirectAction" >baseProductAction_list</result>
+			<result name="plist">/WEB-INF/pages/baseinfo/jProductList.jsp</result>
+			<result name="pupdate">/WEB-INF/pages/baseinfo/jProductUpdate.jsp</result>
+			<result name="pview">/WEB-INF/pages/baseinfo/jProductView.jsp</result>
+		</action>
+		
+	</package>
+</struts>
+	

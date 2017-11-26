@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ECharts · Example</title>
+
+    <link rel="shortcut icon" href="../echarlib/favicon.png">
+    
+    <link href="../echarlib/font-awesome.min.css" rel="stylesheet">
+    <link href="../echarlib/bootstrap.css" rel="stylesheet">
+    <link href="../echarlib/carousel.css" rel="stylesheet">
+    <link href="../echarlib/echartsHome.css" rel="stylesheet">
+    <link href="../echarlib/codemirror.css" rel="stylesheet">
+    <link href="../echarlib/monokai.css" rel="stylesheet">
+    
+    <script src="../echarlib/bootstrap.min.js"></script>
+    <script src="../echarlib/echartsExample.js"></script>
+    <script src="../echarlib/codemirror.js"></script>
+    <script src="../echarlib/javascript.js"></script>
+    <script src="../echarlib/jquery.min.js"></script>
+    
+    <script src="../js/echarts.js"></script>
+    <script type="text/javascript" src="../echarlib/echartsHome.js"></script>
+    
+    
+    
+    <script type="text/javascript">
+    
+    $(function(){
+    	var myChart = echarts.init(document.getElementById('main'));
+    	var quxianoption = {
+    			title : {
+    	            text: '南丁格尔玫瑰图',
+    	            subtext: '纯属虚构',
+    	            x:'center'
+    	        },
+    	        tooltip : {
+    	            trigger: 'item',
+    	            formatter: "{a} <br/>{b} : {c} ({d}%)"
+    	        },
+    	        legend: {
+    	            x : 'center',
+    	            y : 'bottom',
+    	            data:[]
+    	        },
+    	        toolbox: {
+    	            show : true,
+    	            feature : {
+    	                mark : {show: true},
+    	                dataView : {show: true, readOnly: false},
+    	                magicType : {
+    	                    show: true, 
+    	                    type: ['pie', 'funnel']
+    	                },
+    	                restore : {show: true},
+    	                saveAsImage : {show: true}
+    	            }
+    	        },
+    	        calculable : true,
+    	        series : [
+    	            {
+    	                name:'半径模式',
+    	                type:'pie',
+    	                radius : [20, 110],
+    	                center : ['25%', 200],
+    	                roseType : 'radius',
+    	                width: '40%',       // for funnel
+    	                max: 40,            // for funnel
+    	                itemStyle : {
+    	                    normal : {
+    	                        label : {
+    	                            show : false
+    	                        },
+    	                        labelLine : {
+    	                            show : false
+    	                        }
+    	                    },
+    	                    emphasis : {
+    	                        label : {
+    	                            show : true
+    	                        },
+    	                        labelLine : {
+    	                            show : true
+    	                        }
+    	                    }
+    	                },
+    	                data:[]
+    	            },
+    	            {
+    	                name:'面积模式',
+    	                type:'pie',
+    	                radius : [30, 110],
+    	                center : ['75%', 200],
+    	                roseType : 'area',
+    	                x: '50%',               // for funnel
+    	                max: 40,                // for funnel
+    	                sort : 'ascending',     // for funnel
+    	                data:[]
+    	            }
+    	        ]
+    	};
+    	
+        
+        	myChart.setOption(quxianoption);
+        	$.ajax({
+        		url:'statChartAction_toEchar',
+        		type:'get',
+        		dataType:'json',
+        		success:function(d){
+        			myChart.setOption({
+        				legend: {
+				            data: d.y
+				        },
+				        series: [{
+				            data: d.x
+				        },
+				        {
+				        	data: d.x
+				        }]
+        			});
+        		}
+        	})
+    })
+    
+    </script>
+</head>
+
+<body>
+	  <div>
+		    <table>
+		    		<tr>
+		    			<div id="main" style="width: 100%;height:640px;"></div>
+		    		</tr>
+	    	</table>
+	    </div>
+    
+</body>
+</html>

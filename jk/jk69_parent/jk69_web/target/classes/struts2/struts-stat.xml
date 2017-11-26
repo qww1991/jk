@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<package name="stat" namespace="/stat" extends="default">
+		<action name="statChartAction_*" method="{1}" class="statChartAction">
+			<result name="factorysale">/WEB-INF/pages/stat/chart/pieDemo.html</result>
+			<result name="productsale">/WEB-INF/pages/stat/chart/columnDemo.htm</result>
+			<result name="onlineinfo">/WEB-INF/pages/stat/chart/lineDemo.html</result>
+			<result name="productshort">/WEB-INF/pages/stat/chart/top10.html</result>
+			<result name="toUserAmchars">/WEB-INF/pages/stat/chart/columnWithImages.html</result>
+			<result name="toUserEchars">/WEB-INF/pages/stat/chart/toEchars.html</result>
+		</action>
+	</package>
+	
+</struts>

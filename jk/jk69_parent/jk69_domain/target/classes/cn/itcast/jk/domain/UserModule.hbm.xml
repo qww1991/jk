@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.itcast.jk.domain.UserModule" table="USER_MODULE_P">
+		<id name="id" column="USER_MODULE_ID">
+			<!--hibernate主键生成策略：native, increment,sequence,uuid,assigned,identity  -->
+			<generator class="assigned"/>
+		</id>
+		
+		<property name="module_id" column="MODULE_ID"/>
+		<property name="moduleName" column="MODULE_NAME"/>
+		<property name="curl" column="CURL"/>
+		<property name="click" column="CLICK"/>
+		<property name="custom" column="CUSTOM"/>
+		<property name="user_id" column="USER_ID"/>
+	</class>
+</hibernate-mapping>
